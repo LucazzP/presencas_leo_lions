@@ -1,7 +1,8 @@
 package dao;
 
-import model.Usuario;
+import model.Reuniao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,66 +18,85 @@ public class ReuniaoDAO {
         conn = new Conexao();
     }
 
-//    public void inserirUsuario(Usuario u) {
-//        try {
-//            query = "INSERT INTO usuario(nome, senha, idade, email) VALUES (" +
-//                    "'" + u.getNome() + "'," +
-//                    "'" + u.getSenha() + "'," +
-//                    +u.getIdade() + "," +
-//                    "'" + u.getEmail() + "')";
-//
-//            statement = conn.getConnection().prepareStatement(query);
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public ArrayList<Usuario> listarUsuario() {
-//        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-//
-//        try {
-//            query = "SELECT * FROM usuario";
-//            statement = conn.getConnection().prepareStatement(query);
-//            resultado = statement.executeQuery();
-//
-//            while (resultado.next()) {
-//                Usuario usuario = new Usuario(resultado.getInt("id"), resultado.getString("nome"),
-//                        resultado.getString("senha"), resultado.getInt("idade"), resultado.getString("email")
-//                );
-//                usuarios.add(usuario);
-//            }
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        return usuarios;
-//    }
-//
-//    public void editarUsuario(Usuario usuario) {
-//        try {
-//            query = "UPDATE usuario SET " +
-//                    "nome = '" + usuario.getNome() + "'," +
-//                    //"senha = '" + usuario.getSenha() + "'," +
-//                    //"idade = '" + usuario.getIdade() + "'," +
-//                    "email = '" + usuario.getEmail() + "'" +
-//                    "WHERE id = '" + usuario.getId() + "';";
-//
-//            statement = conn.getConnection().prepareStatement(query);
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//    public void deletarUsuario(int id) {
-//        try {
-//            query = "DELETE FROM usuario WHERE id = '" + id + "';";
-//
-//            statement = conn.getConnection().prepareStatement(query);
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+    public void inserirReuniao(Reuniao reuniao) {
+        try {
+            query = "INSERT INTO reuniao(data, numero) VALUES (" +
+                    "'" + new Date(reuniao.getData().getTime()) + "',"
+                    + reuniao.getNumero() + ")";
+
+            statement = conn.getConnection().prepareStatement(query);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public ArrayList<Reuniao> listarReuniao() {
+        ArrayList<Reuniao> reunioes = new ArrayList<Reuniao>();
+
+        try {
+            query = "SELECT * FROM reuniao";
+            statement = conn.getConnection().prepareStatement(query);
+            resultado = statement.executeQuery();
+
+            while (resultado.next()) {
+                Reuniao reuniao = new Reuniao(
+                        resultado.getInt("id"),
+                        resultado.getDate("data"),
+                        resultado.getInt("numero")
+                );
+                reunioes.add(reuniao);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return reunioes;
+    }
+
+    public void editarReuniao(Reuniao reuniao) {
+        try {
+            query = "UPDATE reuniao SET " +
+                    "data = '" + new Date(reuniao.getData().getTime()) + "'," +
+                    "numero = '" + reuniao.getNumero() + "'" +
+                    "WHERE id = '" + reuniao.getId() + "';";
+
+            statement = conn.getConnection().prepareStatement(query);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void deletarReuniao(int id) {
+        try {
+            query = "DELETE FROM reuniao WHERE id = '" + id + "';";
+
+            statement = conn.getConnection().prepareStatement(query);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Reuniao getReuniao(int id) {
+        Reuniao reuniao = null;
+        try {
+            query = "SELECT * FROM reuniao WHERE id = " + id + ";";
+
+            statement = conn.getConnection().prepareStatement(query);
+            resultado = statement.executeQuery();
+            if (resultado.next()) {
+                reuniao = new Reuniao(
+                        resultado.getInt("id"),
+                        resultado.getDate("data"),
+                        resultado.getInt("numero")
+                );
+                return reuniao;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Id da reunião inválida");
+        }
+        return reuniao;
+    }
 }

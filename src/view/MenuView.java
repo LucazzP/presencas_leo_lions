@@ -3,8 +3,31 @@ package view;
 import java.util.Scanner;
 
 public class MenuView {
+    Scanner sc;
+
     public int abrirMenu() {
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
+        System.out.println("(1) - Registrar presença");
+        System.out.println("(2) - Criar reuniões");
+        System.out.println("(3) - Alterar/Adicionar usuarios");
+        System.out.println("(0) - Sair");
+        System.out.print("Digite uma opção: ");
+        return sc.nextInt();
+    }
+
+    public int menuReunioes() {
+        sc = new Scanner(System.in);
+        System.out.println("(1) - Criar reunião");
+        System.out.println("(2) - Listar reuniões");
+        System.out.println("(3) - Editar reunião");
+        System.out.println("(4) - Excluir/Cancelar reunião");
+        System.out.println("(0) - Sair");
+        System.out.print("Digite uma opção: ");
+        return sc.nextInt();
+    }
+
+    public int menuUsuario() {
+        sc = new Scanner(System.in);
         System.out.println("(1) - Cadastrar usuario");
         System.out.println("(2) - Listar usuarios");
         System.out.println("(3) - Editar usuario");

@@ -1,7 +1,7 @@
-package controller;
+package controller.usuario;
 
 import dao.UsuarioDAO;
-import view.ListarUsuariosView;
+import view.usuario.ListarUsuariosView;
 
 public class ListarUsuariosController {
     public ListarUsuariosController(){

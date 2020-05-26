@@ -14,6 +14,16 @@ public class Usuario {
     final private int permissao;
     final private String salt;
 
+    public Usuario(int id, String nome){
+        this.id = id;
+        this.nome = nome;
+        this.senha = null;
+        this.idade = -1;
+        this.email = null;
+        this.permissao = -1;
+        this.salt = null;
+    }
+
     public Usuario(String nome, String senha, int idade, String email, boolean administrador) {
         this.salt = PasswordUtils.getSalt(20);
         this.id = -1;

@@ -1,11 +1,11 @@
-package controller;
+package controller.usuario;
 
 import dao.UsuarioDAO;
-import view.ExcluirUsuarioView;
+import view.usuario.ExcluirUsuarioView;
 
 public class ExcluirUsuarioController {
     public ExcluirUsuarioController(){
-        view.ExcluirUsuarioView view = new view.ExcluirUsuarioView();
+        ExcluirUsuarioView view = new ExcluirUsuarioView();
         int idUser = view.digitarId();
         if(idUser > 0){
             UsuarioDAO dao = new UsuarioDAO();

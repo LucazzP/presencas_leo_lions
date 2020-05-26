@@ -1,12 +1,12 @@
-package controller;
+package controller.usuario;
 
 import dao.UsuarioDAO;
 import model.Usuario;
-import view.EditarUsuarioView;
+import view.usuario.EditarUsuarioView;
 
 public class EditarUsuarioController {
     public EditarUsuarioController(){
-        view.EditarUsuarioView view = new view.EditarUsuarioView();
+        EditarUsuarioView view = new EditarUsuarioView();
         int idUser = view.digitarId();
         if(idUser > 0){
             UsuarioDAO dao = new UsuarioDAO();

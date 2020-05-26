@@ -1,11 +1,12 @@
 
-package controller;
+package controller.usuario;
 
 import dao.UsuarioDAO;
+import view.usuario.CadastrarUsuarioView;
 
 public class CadastrarUsuarioController {
     
-    private view.CadastrarUsuarioView cadastrarUsuarioView;
+    private CadastrarUsuarioView cadastrarUsuarioView;
     private model.Usuario u;
     
     public CadastrarUsuarioController(){
@@ -17,7 +18,7 @@ public class CadastrarUsuarioController {
     }
 
     private void inicializar(boolean administrador) {
-        cadastrarUsuarioView = new view.CadastrarUsuarioView();
+        cadastrarUsuarioView = new CadastrarUsuarioView();
         u = cadastrarUsuarioView.telaDeCadastro(administrador);
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();

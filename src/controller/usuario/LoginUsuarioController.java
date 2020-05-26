@@ -1,4 +1,4 @@
-package controller;
+package controller.usuario;
 
 public class LoginUsuarioController {
 }

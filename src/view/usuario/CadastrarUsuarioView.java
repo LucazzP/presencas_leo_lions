@@ -1,5 +1,5 @@
 
-package view;
+package view.usuario;
 
 import model.Usuario;
 
