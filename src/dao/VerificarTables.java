@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class VerificarTables {
     Conexao conexao = new Conexao();
 
-    public void verificar(){
+    /// Retorna true se o usuario for cadastrado, false se não foi.
+    public boolean verificar(){
         try {
             boolean haveUsuarioTable = conexao.getConnection().getMetaData().getTables(null, null, "usuario", null).next();
             boolean haveReuniaoTable = conexao.getConnection().getMetaData().getTables(null, null, "reuniao", null).next();
@@ -23,10 +24,12 @@ public class VerificarTables {
             }
             if(!haveUsuarioTable) {
                 CadastrarUsuarioController cadastrarUsuarioController = new CadastrarUsuarioController(true);
+                return true;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return false;
     }
 
     final String createTableUsuario =

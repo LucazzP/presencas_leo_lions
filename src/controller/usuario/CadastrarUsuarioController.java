@@ -23,5 +23,6 @@ public class CadastrarUsuarioController {
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.inserirUsuario(u);
+        cadastrarUsuarioView.sucesso();
     }
 }

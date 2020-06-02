@@ -38,12 +38,14 @@ public class CadastrarUsuarioView {
         System.out.print("Digite a idade do(a) " + nome + ": (16) ");
         try{
             idade = Integer.parseInt(s.nextLine());
-        } catch (NumberFormatException e) {}
-
-        if(idade == null){
+        } catch (NumberFormatException ignored) {
             idade = 16;
         }
 
         return new Usuario(nome, senha, idade, email, administrador);
+    }
+
+    public void sucesso() {
+        System.out.println("Usuario cadastrado com sucesso!");
     }
 }

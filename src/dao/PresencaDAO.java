@@ -19,17 +19,13 @@ public class PresencaDAO {
         conn = new Conexao();
     }
 
-    public void inserir(int idReuniao, int idUser) {
-        try {
-            query = "INSERT INTO presenca(reuniao_id, usuario_id) VALUES (" +
-                    "" + idReuniao + ","
-                    + idUser + ")";
+    public void inserir(int idReuniao, int idUser) throws SQLException {
+        query = "INSERT INTO presenca(reuniao_id, usuario_id) VALUES (" +
+                "" + idReuniao + ","
+                + idUser + ")";
 
-            statement = conn.getConnection().prepareStatement(query);
-            statement.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        statement = conn.getConnection().prepareStatement(query);
+        statement.executeUpdate();
     }
 
     public ArrayList<Usuario> listar(int idReuniao) {
@@ -42,8 +38,8 @@ public class PresencaDAO {
 
             while (resultado.next()) {
                 Usuario usuario = new Usuario(
-                    resultado.getInt("id"),
-                    resultado.getString("nome")
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
                 );
                 usuarios.add(usuario);
             }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ListarReuniaoView {
     public void listar(ArrayList<Reuniao> reunioes) {
-        System.out.println("\n> Registros cadastrados:");
+        System.out.println("\n> Reuniões cadastradas:");
 
         System.out.println("Id | Numero | Data");
 

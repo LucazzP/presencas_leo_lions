@@ -95,7 +95,7 @@ public class UsuarioDAO {
             resultado = statement.executeQuery();
             if (resultado.next()) {
                 usuario = new Usuario(resultado.getInt("id"), resultado.getString("nome"),
-                        null, resultado.getInt("idade"),
+                        resultado.getString("senha"), resultado.getInt("idade"),
                         resultado.getString("email"), resultado.getInt("permissao"), resultado.getString("salt")
                 );
                 return usuario;

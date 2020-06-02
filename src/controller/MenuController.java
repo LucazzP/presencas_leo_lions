@@ -1,5 +1,8 @@
 package controller;
 
+import controller.presenca.ExcluirPresencaController;
+import controller.presenca.ListarPresencaController;
+import controller.presenca.RegistrarPresencaController;
 import controller.reuniao.CadastrarReuniaoController;
 import controller.reuniao.EditarReuniaoController;
 import controller.reuniao.ExcluirReuniaoController;
@@ -15,20 +18,19 @@ public class MenuController {
     MenuView view = new MenuView();
     int option = 0;
 
-    public MenuController(){
-        new VerificarTables().verificar();
+    public MenuController() {
         abrirMenu();
     }
 
     public void abrirMenu() {
-        while (true){
+        while (true) {
             option = view.abrirMenu();
 
-            switch (option){
+            switch (option) {
                 case 0:
                     return;
                 case 1:
-                    //TODO Registrar presença
+                    menuPresencas();
                     break;
                 case 2:
                     menuReunioes();
@@ -45,24 +47,49 @@ public class MenuController {
         }
     }
 
-    public void menuReunioes() {
-        while (true){
-            option = view.menuReunioes();
+    public void menuPresencas() {
+        while (true) {
+            option = view.menuPresencas();
 
-            switch (option){
+            switch (option) {
                 case 0:
                     return;
                 case 1:
-                    CadastrarReuniaoController cadastrarUsuarioController = new CadastrarReuniaoController();
+                    RegistrarPresencaController registrarPresencaController = new RegistrarPresencaController();
                     break;
                 case 2:
-                    ListarReunioesController listarUsuariosController = new ListarReunioesController();
+                    ListarPresencaController listarPresencaController = new ListarPresencaController();
                     break;
                 case 3:
-                    EditarReuniaoController editarUsuarioController = new EditarReuniaoController();
+                    ExcluirPresencaController excluirPresencaController = new ExcluirPresencaController();
+                    break;
+                default:
+                    view.opcaoInvalida();
+                    break;
+            }
+
+            option = 0;
+        }
+    }
+
+    public void menuReunioes() {
+        while (true) {
+            option = view.menuReunioes();
+
+            switch (option) {
+                case 0:
+                    return;
+                case 1:
+                    CadastrarReuniaoController cadastrarReuniaoController = new CadastrarReuniaoController();
+                    break;
+                case 2:
+                    ListarReunioesController listarReunioesController = new ListarReunioesController();
+                    break;
+                case 3:
+                    EditarReuniaoController editarReuniaoController = new EditarReuniaoController();
                     break;
                 case 4:
-                    ExcluirReuniaoController excluirUsuarioController = new ExcluirReuniaoController();
+                    ExcluirReuniaoController excluirReuniaoController = new ExcluirReuniaoController();
                     break;
                 default:
                     view.opcaoInvalida();
@@ -74,10 +101,10 @@ public class MenuController {
     }
 
     public void menuUsuario() {
-        while (true){
+        while (true) {
             option = view.menuUsuario();
 
-            switch (option){
+            switch (option) {
                 case 0:
                     return;
                 case 1:

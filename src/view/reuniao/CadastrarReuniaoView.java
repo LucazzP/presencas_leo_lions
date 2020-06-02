@@ -29,8 +29,14 @@ public class CadastrarReuniaoView {
         System.out.print("Digite o numero da reunião: ");
         try{
             numero = Integer.parseInt(s.nextLine());
-        } catch (NumberFormatException e) {}
+        } catch (NumberFormatException e) {
+            numero = -1;
+        }
 
         return new Reuniao(data, numero);
+    }
+
+    public void sucesso() {
+        System.out.println("Reunião cadastrada com sucesso!");
     }
 }

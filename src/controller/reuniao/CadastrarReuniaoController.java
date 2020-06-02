@@ -21,5 +21,6 @@ public class CadastrarReuniaoController {
 
         ReuniaoDAO reuniaoDAO = new ReuniaoDAO();
         reuniaoDAO.inserirReuniao(reuniao);
+        cadastrarReuniaoView.sucesso();
     }
 }

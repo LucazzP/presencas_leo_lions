@@ -7,12 +7,19 @@ import java.sql.*;
 public class Conexao {
     
     private Connection conn;
-    private String banco = "jdbc:mysql://127.0.0.1:3306/db_bsi?useSSL=false";
-    
+
     public Conexao(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(banco, "root", "root");
+            String bancoDb = "jdbc:mysql://127.0.0.1:3306/db_bsi?useSSL=false";
+            String banco = "jdbc:mysql://127.0.0.1:3306/?useSSL=false";
+            try{
+                conn = DriverManager.getConnection(bancoDb, "root", "root");
+            } catch (SQLException ex) {
+                conn = DriverManager.getConnection(banco, "root", "root");
+                executeQuery("CREATE SCHEMA db_bsi");
+                conn = DriverManager.getConnection(bancoDb, "root", "root");
+            }
         }
         catch(ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
@@ -32,7 +39,9 @@ public class Conexao {
             ex.printStackTrace();
         } finally {
             try{
-                statement.close();
+                if (statement != null) {
+                    statement.close();
+                }
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }

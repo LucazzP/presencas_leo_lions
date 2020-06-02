@@ -7,9 +7,19 @@ public class MenuView {
 
     public int abrirMenu() {
         sc = new Scanner(System.in);
-        System.out.println("(1) - Registrar presença");
+        System.out.println("(1) - Registrar presenças");
         System.out.println("(2) - Criar reuniões");
         System.out.println("(3) - Alterar/Adicionar usuarios");
+        System.out.println("(0) - Sair");
+        System.out.print("Digite uma opção: ");
+        return sc.nextInt();
+    }
+
+    public int menuPresencas() {
+        sc = new Scanner(System.in);
+        System.out.println("(1) - Registrar presença");
+        System.out.println("(2) - Listar presenças");
+        System.out.println("(3) - Excluir presença");
         System.out.println("(0) - Sair");
         System.out.print("Digite uma opção: ");
         return sc.nextInt();

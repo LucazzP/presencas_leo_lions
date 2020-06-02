@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ListarUsuariosView {
     public void listarUsuarios(ArrayList<Usuario> usuarios) {
-        System.out.println("\n> Registros cadastrados:");
+        System.out.println("\n> Usuarios cadastrados:");
 
         System.out.println("Id | Nome | Email");
 
